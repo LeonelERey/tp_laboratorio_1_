@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1506034021 source:c:\users\leeoe\desktop\tp2_laboratorio\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"funciones.h"
+
+1506029218 c:\users\leeoe\desktop\tp2_laboratorio\funciones.h
+
+1506029374 source:c:\users\leeoe\desktop\tp2_laboratorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	<conio.h>
+
