@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
-#include "lib.h"
+#include "Libreria.h"
 #define TAM 10
 #define TA 20
 #define Equipo (AMOLADORA-MEZCLADORA-TALADRO)
@@ -13,7 +13,6 @@ int main()
     xAlquiler alquiler[TA];
     char seguir='s';
     int opcion;
-    int i;
 
     inicializarCliente(cliente,TAM);
     inicializarAlquiler(alquiler,TA);
@@ -25,8 +24,9 @@ int main()
         printf("2- Modificar clinte\n");
         printf("3- Baja del cliente\n");
         printf("4- nuevo alquiler\n");
-        printf("5- informar\n\n");
-        printf("6- Salir\n");
+        printf("5- Finalizar alquiler");
+        printf("6- informar\n\n");
+        printf("7- Salir\n");
 
         scanf("%d",&opcion);
 
@@ -42,16 +42,22 @@ int main()
             darBaja(cliente,TAM);
             break;
         case 4:
-            nuevoAlquiler(alquiler,TA);
+            nuevoAlquiler(alquiler,cliente,TA,TAM);
             break;
         case 5:
+            finDeAlquiler(alquiler,TA);
+            break;
+        case 6:
             //mostarCliente(cliente,TAM);
             //mostarAlquiler(alquiler,TA);
             clientesAlquileres(cliente,alquiler,TAM,TA);
             break;
-        case 6:
+        case 7:
             seguir = 'n';
             break;
+        default:
+            printf("ingres una opcion entre 1 y 7:");
+            scanf("%d",&opcion);
         }
     }
 
