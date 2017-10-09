@@ -493,20 +493,21 @@ void promedioHoras(xAlquiler alquiler[],int tam)
     int i;
     int cont=0;
     int acumulador=0;
+    char algo[]={"finalizado"};
     float promedio;
     printf("===============================================\n");
     for(i=0;i<tam;i++)
     {
-        if(alquiler[i].estaAlquiler==-1)
+        if(strcmp(alquiler[i].estaAlquiler,algo)==0)
         {
             acumulador=acumulador+alquiler[i].tiempoReal;
             cont++;
         }
     }
-    if(alquiler[i].estaAlquiler==-1)
+    if(cont!=0)
     {
         promedio=(float)acumulador/cont;
-        printf("el promedio de las hora reales es: %f",promedio);
+        printf("el promedio de las hora reales es: %.2f",promedio);
     }
     else
     {
