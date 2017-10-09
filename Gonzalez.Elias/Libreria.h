@@ -40,4 +40,5 @@ int buscarPorOrden(xAlquiler[],int,int);
 int obtenerEspacioLibre(xCliente[],int);
 int obtenerEspacioLibreAlqui(xAlquiler[],int);
 void finDeAlquiler(xAlquiler[],int);
-
+void clienteMasCanci(xAlquiler[],xCliente[],int,int);
+void equipoMasVendido(xAlquiler[],int);

@@ -99,8 +99,9 @@ void caragarAlquileres(xAlquiler alquiler[],int tam)
     char equipo[][30]= {"taladro","amoladora","taladro","mescladora","amoladora","mescladora","taladro","mescladora","amoladora","taladro"};
     int idCliente[]= {1,2,1,4,5,1,5,3,4,1};
     char operador[][20]= {"juan","martin","pedro","juan","martin","lucas","oscar","martin ","lucas","pedro"};
-    char estadoAlqui[][20]= {"alquilado","finalizado","alquilado","finalizado","finalizado","alquilado","finalizado","alquilado","finalizado","alquilado"};
+    char estadoAlqui[][20]= {"alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado"};
     int ordenes[]= {1000,1001,1002,1003,1004,1005,1006,1007,1008,1009};
+    //int estado[]={1,-1,1,-1,-1,1,-1,1,-1,1};
     int i;
     for(i=0; i<tam; i++)
     {
@@ -219,9 +220,13 @@ void clientesAlquileres(xCliente cliente[],xAlquiler alquiler[],int tam,int tama
             printf("%s %s:\n",cliente[i].apellido,cliente[i].nombre);
             for(j=0; j<tama; j++)
             {
-                if(alquiler[j].estado==1&&alquiler[j].idCliente==cliente[i].idCliente||alquiler[j].estado==-1)
+                if(alquiler[j].estado==1)
                 {
-                    printf("%s==%d hs==%s\n",alquiler[j].equipo,alquiler[j].tiempo,alquiler[j].operador);
+                    if(alquiler[j].idCliente==cliente[i].idCliente)
+                    {
+                        printf("%s==%dhs==%s\n",alquiler[j].equipo,alquiler[j].tiempo,alquiler[j].operador);
+                    }
+
                 }
 
             }
@@ -380,5 +385,110 @@ void finDeAlquiler(xAlquiler alquiler[],int tam)
         }
 
     }
+
+}
+void clienteMasCanci(xAlquiler alquiler[],xCliente cliente[],int tam,int tamInteg)
+{
+    int i;
+    int j;
+    int cont1=0;
+    int cont2=0;
+    int aux;
+    int aux2;
+
+    for(i=0; i<tamInteg; i++)
+    {
+        for(j=0; j<tam; j++)
+        {
+            if(alquiler[j].idCliente==cliente[i].idCliente)
+            {
+                cont2++;
+            }
+
+        }
+        if(cont2>=cont1)
+        {
+            if(cont1==cont2)
+            {
+                aux2=i;
+            }
+            else
+            {
+                cont1=cont2;
+                aux=i;
+            }
+
+        }
+        cont2=0;
+    }
+    for(i=0; i<tam; i++)
+    {
+
+        if(alquiler[i].idCliente==cliente[aux].idCliente)
+        {
+            printf("===============================================\n");
+            printf("el cliente con mas alquileres es: %s %s\n",cliente[aux].apellido,cliente[aux].nombre);
+            if(alquiler[i].idCliente==cliente[aux2].idCliente)
+            {
+                printf("y tambien:%s %s\n",cliente[aux2].apellido,cliente[aux2].nombre);
+            }
+            break;
+        }
+    }
+
+}
+void equipoMasVendido(xAlquiler alquiler[],int tam)
+{
+    int i;
+    int j;
+    int cont1=0;
+    int cont2=0;
+    int contAux;
+    int aux;
+    int aux2;
+
+    for(i=0; i<tam; i++)
+    {
+        for(j=0; j<tam; j++)
+        {
+            if(strcmp(alquiler[j].equipo,alquiler[i].equipo)==0)
+            {
+                cont2++;
+            }
+
+        }
+        if(cont2>=cont1)
+        {
+            contAux=cont2;
+            if(cont1==cont2)
+            {
+                aux2=i;
+            }
+            else
+            {
+                cont1=cont2;
+                aux=i;
+            }
+
+        }
+        cont2=0;
+    }
+    for(i=0; i<tam; i++)
+    {
+
+        if(strcmp(alquiler[i].equipo,alquiler[aux].equipo)==0)
+        {
+            printf("===============================================\n");
+            printf("el equipo mas alquilado es: %s con:%d ventas\n",alquiler[aux].equipo,contAux);
+            if(strcmp(alquiler[i].equipo,alquiler[aux2].equipo)==0)
+            {
+                printf("y tambien:%s con:%d ventas\n",alquiler[aux2].equipo,contAux);
+            }
+            break;
+        }
+    }
+}
+void promedioHoras(xAlquiler alquiler[],int tam)
+{
 
 }

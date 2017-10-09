@@ -24,7 +24,7 @@ int main()
         printf("2- Modificar clinte\n");
         printf("3- Baja del cliente\n");
         printf("4- nuevo alquiler\n");
-        printf("5- Finalizar alquiler");
+        printf("5- Finalizar alquiler\n");
         printf("6- informar\n\n");
         printf("7- Salir\n");
 
@@ -48,9 +48,9 @@ int main()
             finDeAlquiler(alquiler,TA);
             break;
         case 6:
-            //mostarCliente(cliente,TAM);
-            //mostarAlquiler(alquiler,TA);
             clientesAlquileres(cliente,alquiler,TAM,TA);
+            clienteMasCanci(alquiler,cliente,TAM,TA);
+            equipoMasVendido(alquiler,TA);
             break;
         case 7:
             seguir = 'n';
