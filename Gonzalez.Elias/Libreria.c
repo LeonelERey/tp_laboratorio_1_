@@ -116,7 +116,7 @@ void caragarAlquileres(xAlquiler alquiler[],int tam)
     }
 
 }
-void mostarCliente(xCliente cliente[],int tamInteg)
+/*void mostarCliente(xCliente cliente[],int tamInteg)
 {
     int i;
 
@@ -142,7 +142,7 @@ void mostarAlquiler(xAlquiler alquiler[],int tam)
         }
 
     }
-}
+}*/
 void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
 {
     int i;
