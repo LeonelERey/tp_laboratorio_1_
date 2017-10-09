@@ -5,8 +5,6 @@
 #include "Libreria.h"
 #define TAM 10
 #define TA 20
-#define Equipo (AMOLADORA-MEZCLADORA-TALADRO)
-#define Estado (ALQUILADO-FINALIZADO)
 int main()
 {
     xCliente cliente[TAM];
@@ -51,6 +49,7 @@ int main()
             clientesAlquileres(cliente,alquiler,TAM,TA);
             clienteMasCanci(alquiler,cliente,TAM,TA);
             equipoMasVendido(alquiler,TA);
+            promedioHoras(alquiler,TA);
             break;
         case 7:
             seguir = 'n';

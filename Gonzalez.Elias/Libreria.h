@@ -42,3 +42,4 @@ int obtenerEspacioLibreAlqui(xAlquiler[],int);
 void finDeAlquiler(xAlquiler[],int);
 void clienteMasCanci(xAlquiler[],xCliente[],int,int);
 void equipoMasVendido(xAlquiler[],int);
+void promedioHoras(xAlquiler[],int);
