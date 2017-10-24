@@ -8,7 +8,7 @@
 #include <conio.h>
 #include "funciones.h"
 #include <string.h>
-#define ARCH /C:/Users/JOAKO/Desktop/TP3/TP_3_Cascara/peliculas.html
+#define ARCH /C:/Users/Leonel/Desktop/TP3/TP_3_Cascara/peliculas.html
 #define TAM 10
 
 int main()
@@ -27,7 +27,7 @@ int main()
         printf("2- Borrar pelicula\n");
         printf("3- Modificar pelicula\n");
         printf("4- Generar pagina web\n");
-        printf("5- Listar\n");
+        printf("5- Listar\n\n");
         printf("6- Salir\n");
         printf("opcion: ");
         scanf("%d",&opcion);
