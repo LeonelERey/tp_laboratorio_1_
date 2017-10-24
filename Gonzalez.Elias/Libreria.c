@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include <ctype.h>
 #include "Libreria.h"
 void inicializarCliente(xCliente cliente[],int tam)
 {
@@ -35,11 +36,11 @@ void altaCliente(xCliente cliente[],int tam)
             {
                 cliente[i].idCliente=cont;
                 printf("ingrese el nombre del cliente:");
-                fflush(stdin),
-                       gets(cliente[i].nombre);
+                fflush(stdin);
+                gets(cliente[i].nombre);
                 printf("ingrese el apellido del cliente:");
-                fflush(stdin),
-                       gets(cliente[i].apellido);
+                fflush(stdin);
+                gets(cliente[i].apellido);
                 printf("ingrese el numero de documento:");
                 scanf("%d",&cliente[i].DNI);
                 for(j=0; j<tam; j++)
@@ -95,7 +96,7 @@ void cargarCliente(xCliente cliente[],int tamInteg)
 }
 void caragarAlquileres(xAlquiler alquiler[],int tam)
 {
-    int tiempoEstimado[]= {10,15,24,36,12,5,50,4,8,16};
+    int tiempoEstimado[]= {10,15,24,36,12,15,10,4,8,16};
     char equipo[][30]= {"taladro","taladro","taladro","mescladora","amoladora","mescladora","amoladora","mescladora","amoladora","taladro"};
     int idCliente[]= {1,2,4,4,5,1,4,4,3,1};
     char operador[][20]= {"juan","martin","pedro","juan","martin","lucas","oscar","martin ","lucas","pedro"};
@@ -116,7 +117,7 @@ void caragarAlquileres(xAlquiler alquiler[],int tam)
     }
 
 }
-/*void mostarCliente(xCliente cliente[],int tamInteg)
+void mostarCliente(xCliente cliente[],int tamInteg)
 {
     int i;
 
@@ -130,7 +131,7 @@ void caragarAlquileres(xAlquiler alquiler[],int tam)
     }
 
 }
-void mostarAlquiler(xAlquiler alquiler[],int tam)
+/*void mostarAlquiler(xAlquiler alquiler[],int tam)
 {
     int i;
 
@@ -138,7 +139,7 @@ void mostarAlquiler(xAlquiler alquiler[],int tam)
     {
         if(alquiler[i].estado==1)
         {
-            printf("%s==%s==%d==%d\n",alquiler[i].equipo,alquiler[i].operador,alquiler[i].idCliente,alquiler[i].tiempo);
+            printf("%s==%s==%d==%d\n",alquiler[i].equiptolower(respuesta);o,alquiler[i].operador,alquiler[i].idCliente,alquiler[i].tiempo);
         }
 
     }
@@ -149,6 +150,7 @@ void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
     int equipo;
     int retorno;
     int aux;
+    int cont=0;
     char taladro[15]="taladro";
     char amoladora[15]="amoladora";
     char mescladora[15]="mescladora";
@@ -162,6 +164,9 @@ void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
 
             if(alquiler[i].estado==0)
             {
+                alquiler[i].orden=cont+1000;
+                mostarCliente(cliente,tama);
+                printf("===============================================\n");
                 printf("id del cliente:");
                 scanf("%d",&alquiler[i].idCliente);
                 retorno=buscarPorId(cliente,tama,alquiler[i].idCliente);
@@ -171,6 +176,9 @@ void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
                     scanf("%d",&alquiler[i].idCliente);
                     retorno=buscarPorId(cliente,tama,alquiler[i].idCliente);
                 }
+                printf("===============================================\n");
+                printf("1-taladro.\n2-mescladora.\n3-amoladora.\n");
+                printf("===============================================\n");
                 printf("equipo que va a alquilar:");
                 scanf("%d",&equipo);
                 while(equipo<1||equipo>3)
@@ -200,7 +208,7 @@ void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
 
                 break;
             }
-
+            cont++;
         }
     }
     else
@@ -226,7 +234,7 @@ void clientesAlquileres(xCliente cliente[],xAlquiler alquiler[],int tam,int tama
                 {
                     if(alquiler[j].idCliente==cliente[i].idCliente&&strcmp(alquiler[j].estaAlquiler,"alquilado")==0)
                     {
-                        printf("%s==%dhs==%s\n",alquiler[j].equipo,alquiler[j].tiempo,alquiler[j].operador);
+                        printf("%s==%dhs==%s==%d\n",alquiler[j].equipo,alquiler[j].tiempo,alquiler[j].operador,alquiler[j].orden);
                     }
 
                 }
@@ -240,6 +248,7 @@ void modificacion(xCliente cliente[],int tam)
     int i;
     int aux;
     int retorno;
+    char respuesta;
 
     printf("ingres el id del usuario:");
     scanf("%d", &aux);
@@ -255,13 +264,33 @@ void modificacion(xCliente cliente[],int tam)
     {
         if(cliente[i].idCliente==aux)
         {
-            printf("el cliente a modificar es:%s==%s\n",cliente[i].apellido,cliente[i].nombre);
-            printf("ingrese un nuevo nombre:");
-            fflush(stdin);
-            gets(cliente[i].nombre);
-            printf("ingrese un nuevo apellido:");
-            fflush(stdin);
-            gets(cliente[i].apellido);
+            printf("usted desea modificar este cliente %s %s s/n:\n",cliente[i].apellido,cliente[i].nombre);
+            respuesta=getch();
+            respuesta=tolower(respuesta);
+            while(respuesta!='s'&&respuesta!='n')
+            {
+                system("color C");
+                printf("debe responder con s o n.\n");
+                respuesta=getch();
+                respuesta=tolower(respuesta);
+            }
+            if(respuesta=='s')
+            {
+                printf("el cliente a modificar es:%s==%s\n",cliente[i].apellido,cliente[i].nombre);
+                printf("ingrese un nuevo nombre:");
+                fflush(stdin);
+                gets(cliente[i].nombre);
+                printf("ingrese un nuevo apellido:");
+                fflush(stdin);
+                gets(cliente[i].apellido);
+                printf("modificacion exitosa!!!");
+
+            }
+            else
+            {
+                printf("operacion cancelada.\n");
+            }
+
         }
     }
 }
@@ -287,17 +316,23 @@ void darBaja (xCliente cliente[], int tam)
         {
             printf("usted desea eliminar este cliente %s %s s/n:\n",cliente[i].apellido,cliente[i].nombre);
             respuesta=getch();
-            while(respuesta!='s'&&respuesta!='n'&&respuesta!='S'&&respuesta!='N')
+            respuesta=tolower(respuesta);
+            while(respuesta!='s'&&respuesta!='n')
             {
                 system("color C");
                 printf("debe responder con s o n.\n");
                 respuesta=getch();
+                respuesta=tolower(respuesta);
             }
-            if(respuesta=='S'||respuesta=='s')
+            if(respuesta=='s')
             {
-                cliente[i].estado=0;
+                cliente[i].estado=-1;
                 printf("se a eliminado correctamente la persona.\n");
 
+            }
+            else
+            {
+                printf("operacion canselada.\n");
             }
         }
     }
@@ -383,7 +418,6 @@ void finDeAlquiler(xAlquiler alquiler[],int tam)
             alquiler[i].estado=-1;
             strcpy(alquiler[i].estaAlquiler,finalizado);
             printf("alquiler finalizado.\n");
-            system("pause");
         }
 
     }
@@ -425,18 +459,18 @@ void clienteMasCanci(xAlquiler alquiler[],xCliente cliente[],int tam,int tamInte
         }
         cont2=0;
     }
-    for(i=0; i<tam; i++)
+    for(i=0; i<tamInteg; i++)
     {
 
-        if(alquiler[i].idCliente==cliente[aux].idCliente&&cliente[i].estado==1)
+        if(alquiler[i].idCliente==cliente[aux].idCliente&&cliente[aux].estado==1)
         {
             printf("===============================================\n");
             printf("el cliente con mas alquileres es: %s %s\n",cliente[aux].apellido,cliente[aux].nombre);
             if(flag==1)
             {
-                for(j=0; j<tam; j++)
+                for(j=0; j<tamInteg; j++)
                 {
-                    if(alquiler[j].idCliente==cliente[aux2].idCliente&&cliente[i].estado==1)
+                    if(alquiler[j].idCliente==cliente[aux2].idCliente&&cliente[aux2].estado==1)
                     {
 
                         printf("y tambien:%s %s\n",cliente[aux2].apellido,cliente[aux2].nombre);

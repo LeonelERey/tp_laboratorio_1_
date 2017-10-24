@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <ctype.h>
 #include <string.h>
 
 typedef struct
@@ -24,6 +25,14 @@ typedef struct
     int orden;
 
 } xAlquiler;
+/** \brief mostrar los cliente en memoria.
+ *
+ * \param array de estructura.
+ * \param tamaño del array.
+ *
+ */
+
+void mostarCliente(xCliente[],int);
 /** \brief cargar el array de estructura.
  *
  * \param array de estructura.
@@ -55,7 +64,7 @@ void inicializarCliente(xCliente[],int);
  *
  */
 
-void inicilizarAlquiler(xAlquiler[],int);
+void inicializarAlquiler(xAlquiler[],int);
 /** \brief cargar un nuevo cliente.
  *
  * \param array de estructura.
@@ -174,3 +183,11 @@ void equipoMasVendido(xAlquiler[],xCliente[],int,int);
  */
 
 void promedioHoras(xAlquiler[],int);
+/** \brief vacia los datos que esten ingresados en un cliente.
+ *
+ * \param array de estructura.
+ * \param tamaño del array.
+ *
+ */
+
+void vaciar(xCliente[],int);

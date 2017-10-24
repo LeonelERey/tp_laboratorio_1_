@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <ctype.h>
 #include <string.h>
 #include "Libreria.h"
 #define TAM 10
@@ -26,37 +27,53 @@ int main()
         printf("6- informar\n\n");
         printf("7- Salir\n");
 
+        printf("opcion:");
         scanf("%d",&opcion);
 
         switch(opcion)
         {
         case 1:
             altaCliente(cliente,TAM);
+            system("pause");
+            system("cls");
             break;
         case 2:
+            mostarCliente(cliente,TAM);
             modificacion(cliente,TAM);
+            system("pause");
+            system("cls");
             break;
         case 3:
+            mostarCliente(cliente,TAM);
             darBaja(cliente,TAM);
+            system("pause");
+            system("cls");
             break;
         case 4:
             nuevoAlquiler(alquiler,cliente,TA,TAM);
+            system("pause");
+            system("cls");
             break;
         case 5:
+            clientesAlquileres(cliente,alquiler,TAM,TA);
             finDeAlquiler(alquiler,TA);
+            system("pause");
+            system("cls");
             break;
         case 6:
             clientesAlquileres(cliente,alquiler,TAM,TA);
             clienteMasCanci(alquiler,cliente,TAM,TA);
             equipoMasVendido(alquiler,cliente,TA,TAM);
             promedioHoras(alquiler,TA);
+            system("pause");
+            system("cls");
             break;
         case 7:
             seguir = 'n';
             break;
         default:
-            printf("ingres una opcion entre 1 y 7:");
-            scanf("%d",&opcion);
+            system("cls");
+            printf("ingres una opcion entre 1 y 7\n");
         }
     }
 

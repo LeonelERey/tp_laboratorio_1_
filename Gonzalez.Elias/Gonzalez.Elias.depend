@@ -45,3 +45,26 @@
 	<conio.h>
 	<string.h>
 
+1508849861 source:c:\users\alumno\desktop\gonzalez.elias\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"Libreria.h"
+
+1508849538 c:\users\alumno\desktop\gonzalez.elias\libreria.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+
+1508850872 source:c:\users\alumno\desktop\gonzalez.elias\libreria.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	"Libreria.h"
+
