@@ -96,8 +96,8 @@ void cargarCliente(xCliente cliente[],int tamInteg)
 void caragarAlquileres(xAlquiler alquiler[],int tam)
 {
     int tiempoEstimado[]= {10,15,24,36,12,5,50,4,8,16};
-    char equipo[][30]= {"taladro","amoladora","taladro","mescladora","amoladora","mescladora","taladro","mescladora","amoladora","taladro"};
-    int idCliente[]= {1,2,1,4,5,1,5,3,4,1};
+    char equipo[][30]= {"taladro","taladro","taladro","mescladora","amoladora","mescladora","amoladora","mescladora","amoladora","taladro"};
+    int idCliente[]= {1,2,4,4,5,1,4,4,3,1};
     char operador[][20]= {"juan","martin","pedro","juan","martin","lucas","oscar","martin ","lucas","pedro"};
     char estadoAlqui[][20]= {"alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado","alquilado"};
     int ordenes[]= {1000,1001,1002,1003,1004,1005,1006,1007,1008,1009};
@@ -152,6 +152,7 @@ void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
     char taladro[15]="taladro";
     char amoladora[15]="amoladora";
     char mescladora[15]="mescladora";
+    char alquilado[15]="alquilado";
 
     aux=obtenerEspacioLibreAlqui(alquiler,tam);
     if(aux!=-1)
@@ -195,6 +196,7 @@ void nuevoAlquiler(xAlquiler alquiler[],xCliente cliente[],int tam,int tama)
                 fflush(stdin);
                 gets(alquiler[i].operador);
                 alquiler[i].estado=1;
+                strcpy(alquiler[i].estaAlquiler,alquilado);
 
                 break;
             }
@@ -222,7 +224,7 @@ void clientesAlquileres(xCliente cliente[],xAlquiler alquiler[],int tam,int tama
             {
                 if(alquiler[j].estado==1)
                 {
-                    if(alquiler[j].idCliente==cliente[i].idCliente)
+                    if(alquiler[j].idCliente==cliente[i].idCliente&&strcmp(alquiler[j].estaAlquiler,"alquilado")==0)
                     {
                         printf("%s==%dhs==%s\n",alquiler[j].equipo,alquiler[j].tiempo,alquiler[j].operador);
                     }
@@ -393,14 +395,15 @@ void clienteMasCanci(xAlquiler alquiler[],xCliente cliente[],int tam,int tamInte
     int j;
     int cont1=0;
     int cont2=0;
+    int flag=0;
     int aux;
     int aux2;
 
-    for(i=0; i<tamInteg; i++)
+    for(i=0; i<tam; i++)
     {
-        for(j=0; j<tam; j++)
+        for(j=0; j<tamInteg; j++)
         {
-            if(alquiler[j].idCliente==cliente[i].idCliente)
+            if(alquiler[j].idCliente==cliente[i].idCliente&&cliente[i].estado==1)
             {
                 cont2++;
             }
@@ -411,6 +414,7 @@ void clienteMasCanci(xAlquiler alquiler[],xCliente cliente[],int tam,int tamInte
             if(cont1==cont2)
             {
                 aux2=i;
+                flag=1;
             }
             else
             {
@@ -424,34 +428,175 @@ void clienteMasCanci(xAlquiler alquiler[],xCliente cliente[],int tam,int tamInte
     for(i=0; i<tam; i++)
     {
 
-        if(alquiler[i].idCliente==cliente[aux].idCliente)
+        if(alquiler[i].idCliente==cliente[aux].idCliente&&cliente[i].estado==1)
         {
             printf("===============================================\n");
             printf("el cliente con mas alquileres es: %s %s\n",cliente[aux].apellido,cliente[aux].nombre);
-            if(alquiler[i].idCliente==cliente[aux2].idCliente)
+            if(flag==1)
             {
-                printf("y tambien:%s %s\n",cliente[aux2].apellido,cliente[aux2].nombre);
+                for(j=0; j<tam; j++)
+                {
+                    if(alquiler[j].idCliente==cliente[aux2].idCliente&&cliente[i].estado==1)
+                    {
+
+                        printf("y tambien:%s %s\n",cliente[aux2].apellido,cliente[aux2].nombre);
+                        break;
+                    }
+                }
             }
             break;
         }
     }
+}
+void equipoMasVendido(xAlquiler alquiler[],xCliente cliente[],int tam,int tamC)
+{
+    int i,j;
+    int conT=0;
+    int conA=0;
+    int conM=0;
+    for(j=0; j<tamC; j++)
+    {
+        if(cliente[j].estado!=0)
+        {
+            for(i=0; i<tam; i++)
+            {
+                if(alquiler[i].estado!=0)
+                {
+                    if(cliente[j].idCliente==alquiler[i].idCliente)
+                    {
+                        if(strcmp(alquiler[i].equipo,"taladro")==0)
+                        {
+                            conT++;
+                        }
+                        else
+                        {
+                            if(strcmp(alquiler[i].equipo,"amoladora")==0)
+                            {
+                                conA++;
+                            }
+                            else
+                            {
+                                if(strcmp(alquiler[i].equipo,"mescladora")==0)
+                                {
+                                    conM++;
+                                }
+
+
+                            }
+                        }
+                    }
+                }
+
+
+
+            }
+        }
+
+    }
+
+
+    if(conT>conA&&conT>conM)
+    {
+        printf("===============================================\n");
+        printf("el equipo mas alquilado es: Taladro con:%d ventas\n",conT);
+
+    }
+
+    else
+    {
+
+        if(conA>conT&&conA>conM)
+        {
+            printf("===============================================\n");
+            printf("el equipo mas alquilado es: Amoladora con:%d ventas\n",conA);
+
+
+        }
+
+        else
+        {
+
+            if(conM>conT&&conM>conA)
+            {
+                printf("===============================================\n");
+                printf("el equipo mas alquilado es: Mezcladora con:%d ventas\n",conM);
+
+            }
+
+        }
+
+
+        if(conT==conA&&conT>conM)
+        {
+            printf("===============================================\n");
+            printf("Los equipos mas alquilados son: el Taladro y la Amoladora con:%d ventas cada uno\n",conT);
+
+
+
+        }
+        else
+        {
+            if(conT==conM&&conT>conA)
+            {
+
+                printf("===============================================\n");
+                printf("Los equipos mas alquilados son: el Taladro y la Mezcladora con:%d ventas cada uno\n",conT);
+
+
+
+            }
+
+
+            else
+            {
+
+                if(conA==conM&&conA>conT)
+                {
+                    printf("===============================================\n");
+
+                    printf("Los equipos mas alquilados son: Amoladora y Mezcladora con:%d ventas cada uno\n",conA);
+
+
+
+
+                }
+
+
+                else
+                {
+
+                    if(conT==conA&&conT==conM)
+                    {
+                        printf("===============================================\n");
+                        printf("Todos los equipos fueron alquilados por igual,con:%d ventas cada uno\n",conT);
+
+                    }
+
+
+                }
+
+            }
+        }
+    }
+
 
 }
-void equipoMasVendido(xAlquiler alquiler[],int tam)
+/*void equipoMasVendido(xAlquiler alquiler[],int tam)
 {
     int i;
     int j;
     int cont1=0;
     int cont2=0;
     int contAux;
-    int aux;
+    int aux=0;
     int aux2;
+    //int flag=0;
 
     for(i=0; i<tam; i++)
     {
         for(j=0; j<tam; j++)
         {
-            if(strcmp(alquiler[j].equipo,alquiler[i].equipo)==0)
+            if(strcmp(alquiler[j].equipo,alquiler[i].equipo)==0&&strcmp(alquiler[j].estaAlquiler,"alquilado")==0)
             {
                 cont2++;
             }
@@ -459,13 +604,15 @@ void equipoMasVendido(xAlquiler alquiler[],int tam)
         }
         if(cont2>=cont1)
         {
-            contAux=cont2;
+
             if(cont1==cont2)
             {
                 aux2=i;
+                //flag=1;
             }
             else
             {
+                contAux=cont2;
                 cont1=cont2;
                 aux=i;
             }
@@ -480,23 +627,28 @@ void equipoMasVendido(xAlquiler alquiler[],int tam)
         {
             printf("===============================================\n");
             printf("el equipo mas alquilado es: %s con:%d ventas\n",alquiler[aux].equipo,contAux);
-            if(strcmp(alquiler[i].equipo,alquiler[aux2].equipo)==0)
-            {
-                printf("y tambien:%s con:%d ventas\n",alquiler[aux2].equipo,contAux);
-            }
-            break;
+
+            //for(j=0; j<tam; j++)
+            //{
+              //  if(strcmp(alquiler[j].equipo,alquiler[aux2].equipo)==0)
+                //{
+                  //  printf("y tambien:%s con:%d ventas\n",alquiler[aux2].equipo,contAux);
+                    //break;
+                //}
+            //}
+            //break;
         }
     }
-}
+}*/
 void promedioHoras(xAlquiler alquiler[],int tam)
 {
     int i;
     int cont=0;
     int acumulador=0;
-    char algo[]={"finalizado"};
+    char algo[]= {"finalizado"};
     float promedio;
     printf("===============================================\n");
-    for(i=0;i<tam;i++)
+    for(i=0; i<tam; i++)
     {
         if(strcmp(alquiler[i].estaAlquiler,algo)==0)
         {
@@ -507,7 +659,7 @@ void promedioHoras(xAlquiler alquiler[],int tam)
     if(cont!=0)
     {
         promedio=(float)acumulador/cont;
-        printf("el promedio de las hora reales es: %.2f",promedio);
+        printf("el promedio de las hora reales es: %.2f\n",promedio);
     }
     else
     {

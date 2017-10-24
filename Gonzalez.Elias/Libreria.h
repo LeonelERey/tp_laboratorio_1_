@@ -165,7 +165,7 @@ void clienteMasCanci(xAlquiler[],xCliente[],int,int);
  *
  */
 
-void equipoMasVendido(xAlquiler[],int);
+void equipoMasVendido(xAlquiler[],xCliente[],int,int);
 /** \brief promedio de horas real de los alquileres vendidos.
  *
  * \param array de estructura.

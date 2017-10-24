@@ -48,7 +48,7 @@ int main()
         case 6:
             clientesAlquileres(cliente,alquiler,TAM,TA);
             clienteMasCanci(alquiler,cliente,TAM,TA);
-            equipoMasVendido(alquiler,TA);
+            equipoMasVendido(alquiler,cliente,TA,TAM);
             promedioHoras(alquiler,TA);
             break;
         case 7:
