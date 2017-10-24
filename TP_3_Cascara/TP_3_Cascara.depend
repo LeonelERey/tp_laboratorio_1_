@@ -1,0 +1,79 @@
+# depslib dependency file v1.0
+1508693073 source:c:\users\joako\desktop\tp3\tp_3_cascara\funciones.c
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<string.h>
+
+1508689805 c:\users\joako\desktop\tp3\tp_3_cascara\funciones.h
+
+1508628631 source:c:\users\joako\desktop\tp3\tp_3_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"funciones.h"
+	<string.h>
+
+1508693073 source:c:\users\joako\desktop\tp_3_cascara\funciones.c
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<string.h>
+
+1508689805 c:\users\joako\desktop\tp_3_cascara\funciones.h
+
+1508628631 source:c:\users\joako\desktop\tp_3_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"funciones.h"
+	<string.h>
+
+1508809998 source:c:\users\leeoe\desktop\tp_3_cascara\funciones.c
+	"funciones.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<string.h>
+
+1508809985 c:\users\leeoe\desktop\tp_3_cascara\funciones.h
+
+1508809985 source:c:\users\leeoe\desktop\tp_3_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"funciones.h"
+	<string.h>
+
