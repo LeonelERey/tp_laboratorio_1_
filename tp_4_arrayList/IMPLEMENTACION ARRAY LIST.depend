@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1510192217 source:c:\users\joako\desktop\practica parcial\implementacion array list\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Funciones.h"
+
+1510015910 c:\users\joako\desktop\practica parcial\implementacion array list\arraylist.h
+
+1510361461 c:\users\joako\desktop\practica parcial\implementacion array list\funciones.h
+
+1510366311 source:c:\users\joako\desktop\practica parcial\implementacion array list\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Funciones.h"
+
+1510365969 source:c:\users\joako\desktop\practica parcial\implementacion array list\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Funciones.h"
+
+1510446077 source:c:\users\leeoe\desktop\implementacion array list\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1509962278 c:\users\leeoe\desktop\implementacion array list\arraylist.h
+
+1510444661 c:\users\leeoe\desktop\implementacion array list\funciones.h
+
+1510444920 source:c:\users\leeoe\desktop\implementacion array list\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Funciones.h"
+
+1510446642 source:c:\users\leeoe\desktop\implementacion array list\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Funciones.h"
+
